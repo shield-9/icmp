@@ -1,0 +1,39 @@
+.gallery-style {
+	position: relative;
+	width: 100%;
+	margin: 0 auto 66px auto;
+	text-align: center;
+}
+#update {
+	padding: 0;
+	text-align: right;
+}
+.g_item img {
+	margin: 0;
+}
+.g_item p {
+	padding: 0;
+}
+.g_item .name {
+	font-weight: 700;
+}
+.g_item .position {
+}
+.g_item .belonging {
+	text-align: right;
+}
+.g_item .motto {
+	border-top: dashed 1px blue;
+}
+.modal-body img {
+	float: left;
+}
+.modal-body .desc {
+	float: left;
+	max-width: 345px;
+	margin-left: 15px;
+}
+.modal-body .catch-phrase {
+	font-size: 15px;
+	font-weight: bolder;
+}
