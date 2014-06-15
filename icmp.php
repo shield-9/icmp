@@ -208,7 +208,7 @@ class IC_member_page {
 		?>
 		<p>
 			<label for="icmp[modal]">
-				<input type="checkbox" class="widefat" id="icmp[modal]" name="icmp[modal]" value="1"<?php if($value['comment']['title']) echo ' checked'; ?>> <?php _e('Turn on Modal', 'icmp'); ?>
+				<input type="checkbox" class="widefat" id="icmp[modal]" name="icmp[modal]" value="1"<?php if($value['modal']) echo ' checked'; ?>> <?php _e('Turn on Modal', 'icmp'); ?>
 			</label>
 		</p>
 		<?php
@@ -376,9 +376,13 @@ class IC_member_page {
 		$meta = get_post_meta($post_id, '_icmp_member_info', true);
 		?>
 		<div class="g_item clearfix">
+			<?php if($meta["modal"]): ?>
 			<a href="javascript:void(0)" data-toggle="modal" data-target="#member-modal-<?php echo $post_id; ?>">
 				<img alt="Avatar" src="<?php echo self::photon_url($meta['avatar-url'], array('w' => '198px', 'crop' => '0,0,100,198px')); ?>">
 			</a>
+			<?php else: ?>
+			<img alt="Avatar" src="<?php echo self::photon_url($meta['avatar-url'], array('w' => '198px', 'crop' => '0,0,100,198px')); ?>">
+			<?php endif; ?>
 			<p class="name"><?php the_title(); ?></p>
 			<?php if($meta['position']): ?>
 				<p class="position"><?php echo $meta['position']; ?></p>
