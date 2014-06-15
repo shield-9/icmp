@@ -22,12 +22,10 @@ class IC_member_page {
 
 	function init() {
 		if(!self::$instance) {
-			/*
 			if(did_action('plugins_loaded'))
 				self::plugin_textdomain();
 			else
 				add_action('plugins_loaded', array(__CLASS__, 'plugin_textdomain'));
-			*/
 
 			self::$instance = new IC_member_page;
 		}
@@ -521,5 +519,9 @@ class IC_member_page {
 		}
 
 		return preg_replace('#^[a-z:]+//#i', $scheme_slashes, $url);
+	}
+
+	static function plugin_textdomain() {
+		load_plugin_textdomain('opcache', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 	}
 }
