@@ -522,6 +522,6 @@ class IC_member_page {
 	}
 
 	static function plugin_textdomain() {
-		load_plugin_textdomain('opcache', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+		load_plugin_textdomain('icmp', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 	}
 }
