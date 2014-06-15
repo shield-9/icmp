@@ -90,6 +90,7 @@ class IC_member_page {
 
 	function add_meta_boxes() {
 		add_meta_box('member-info', __('Member Info', 'icmp'), array(&$this, 'meta_box_member_info'), 'icmp_member', 'normal');
+		add_meta_box('modal-switcher', __('Modal', 'icmp'), array(&$this, 'meta_box_modal_switcher'), 'icmp_member', 'side');
 	}
 
 	function meta_box_member_info() {
@@ -200,6 +201,19 @@ class IC_member_page {
 		<?php
 	}
 
+	function meta_box_modal_switcher() {
+		global $post;
+		
+		$value = get_post_meta($post->ID, '_icmp_member_info', true);
+		?>
+		<p>
+			<label for="icmp[modal]">
+				<input type="checkbox" class="widefat" id="icmp[modal]" name="icmp[modal]" value="1"<?php if($value['comment']['title']) echo ' checked'; ?>> <?php _e('Turn on Modal', 'icmp'); ?>
+			</label>
+		</p>
+		<?php
+	}
+
 	function save_meta_box_data($post_id, $post) {
 		/* Security Checkpoint */
 		/*
@@ -259,7 +273,7 @@ class IC_member_page {
 			'meta_query'		=> array(
 				array(
 					'key'		=> '_icmp_member_info',
-					'value'		=> ';s:7:"trustee";',
+					'value'		=> 's:4:"type";s:7:"trustee";',
 					'compare'	=> 'LIKE',
 				),
 			),
@@ -337,6 +351,13 @@ class IC_member_page {
 			'posts_per_page'	=> -1,
 			'orderby'		=> 'ID',
 			'order'			=> 'ASC',
+			'meta_query'		=> array(
+				array(
+					'key'		=> '_icmp_member_info',
+					'value'		=> 's:5:"modal";s:1:"1";',
+					'compare'	=> 'LIKE',
+				),
+			),
 		));
 
 		if($members->have_posts()):
